@@ -7,7 +7,21 @@
 *,
 html,
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: content-box;
+  @apply text-white box-content m-0 p-0 overflow-hidden bg-black40
+}
+
+::-webkit-scrollbar {
+  @apply w-0 bg-transparent
+}
+
+p {
+  @apply font-[500]
+}
+
+h1 {
+  @apply font-[700]
+}
+
+h3 {
+  @apply font-[600]
 }
