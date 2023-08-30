@@ -1,9 +1,8 @@
+import Billboard from '@/components/Billboard'
 import Image from 'next/image'
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-between min-h-screen p-24">
-      <h1 className="text-6xl font-bold text-center">NETFLIX</h1>
-    </main>
+    <Billboard title="test" description="testing" imageURL="/images/Kingdom.png" />
   )
 }

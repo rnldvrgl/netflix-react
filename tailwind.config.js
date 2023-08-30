@@ -36,5 +36,20 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.text-stroke': {
+          WebkitTextStrokeWidth: '2px',
+          WebkitTextStrokeColor: 'black',
+        },
+        '.text-stroke-gray': {
+          WebkitTextStrokeWidth: '1px',
+          WebkitTextStrokeColor: 'gray',
+        },
+      };
+
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    },
+  ],
 }
