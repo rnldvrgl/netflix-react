@@ -1,7 +1,7 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Bebas_Neue, Roboto_Slab } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+const bebas = Bebas_Neue({ subsets: ['latin'], weight: ['400'] });
 
 export const metadata = {
   title: 'Create Next App',
@@ -11,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={bebas.className}>{children}</body>
     </html>
   )
 }
