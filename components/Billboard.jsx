@@ -18,12 +18,12 @@ const Billboard = ({ title, description, imageURL }) => {
                         <p className='text-6xl font-black leading-none text-red'>N</p>
                         <p className='text-sm'>S E R I E S</p>
                     </div>
-                    <h3 className='text-2xl font-bold text-white10 text-stroke'>{title}</h3>
+                    <h3 className='text-2xl font-bold text-white10'>{title}</h3>
                     <h3 className='text-lg text-white text-start'>{description}</h3>
 
                     <div className='flex w-100'>
                         <button className='flex items-center justify-center w-32 px-5 py-3 mt-5 rounded-lg bg-white10' onClick={handleOnPlay}>
-                            <span className='pl-1 text-lg font-semibold text-justify'>Play</span>
+                            <span className='pl-1 text-lg font-semibold text-justify text-black30'>Play</span>
                         </button>
                     </div>
                 </div>
