@@ -2,10 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-*,
+* {
+  @apply box-content
+}
+
 html,
 body {
-  @apply text-white box-content m-0 p-0 overflow-hidden bg-black40
+  @apply text-white overflow-hidden bg-black40 m-0 p-0
 }
 
 ::-webkit-scrollbar {
@@ -22,4 +25,18 @@ h1 {
 
 h3 {
   @apply font-[600]
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+pre,
+ul,
+li {
+  @apply m-0
 }
