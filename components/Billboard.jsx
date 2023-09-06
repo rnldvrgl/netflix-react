@@ -1,9 +1,7 @@
 "use client"
 
 import React from 'react';
-import { Play }
-
-import Image from 'next/image';
+import { PlayIcon } from "@heroicons/react/24/solid";
 
 const Billboard = ({ title, description, imageURL }) => {
 
@@ -24,7 +22,10 @@ const Billboard = ({ title, description, imageURL }) => {
 
                     <div className='flex w-100'>
                         <button className='flex items-center justify-center w-32 px-5 py-3 mt-5 rounded-lg bg-white10' onClick={handleOnPlay}>
-                            <span className='pl-1 text-lg font-semibold text-justify text-black30'>Play</span>
+                            <PlayIcon className='w-5 h-5 text-black' />
+                            <span className='pl-1 text-lg font-semibold text-justify text-black30'>
+                                Play
+                            </span>
                         </button>
                     </div>
                 </div>
