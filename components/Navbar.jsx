@@ -30,7 +30,7 @@ const Navbar = (props) => {
                     {links.map((link, index) => (
                         <li
                             key={index}
-                            className="mr-3 text-base font-semibold cursor-pointer md:mr-5"
+                            className="mr-3 text-base font-thin tracking-wider uppercase cursor-pointer md:mr-5"
                             onClick={() => handleNavigation(link.path)}
                         >
                             {link.text}
