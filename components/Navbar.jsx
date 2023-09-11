@@ -2,9 +2,12 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const Navbar = (props) => {
     const { username } = props;
+
+    const [showDropdown, setShowDropdown] = useState(false);
 
     const router = useRouter();
 
@@ -40,12 +43,16 @@ const Navbar = (props) => {
 
                 <nav className="flex ml-auto">
                     <div>
-                        <button className="flex items-center overflow-hidden text-white">
+                        <button className="flex items-center overflow-hidden text-white" onClick={() => {
+                            setShowDropdown(!showDropdown)
+                        }}>
                             <p className="text-base">{username}</p>
                         </button>
-                        <div className="absolute pt-2 pr-2 mt-2 ml-auto border shadow-sm bg-black50 border-r-1 border-blue">
-                            <Link href={'/login'}>Sign Out</Link>
-                        </div>
+                        {showDropdown && (
+                            <div className="absolute pt-2 pr-2 mt-2 ml-auto border shadow-sm bg-black50 border-r-1 border-blue">
+                                <Link href={'/login'}>Sign Out</Link>
+                            </div>
+                        )}
                     </div>
                 </nav>
             </div>
