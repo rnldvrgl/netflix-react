@@ -44,7 +44,7 @@ const Navbar = (props) => {
                             <p className="text-base">{username}</p>
                         </button>
                         <div className="absolute pt-2 pr-2 mt-2 ml-auto border shadow-sm bg-black50 border-r-1 border-blue">
-                            <Link href={'#'}>Sign Out</Link>
+                            <Link href={'/login'}>Sign Out</Link>
                         </div>
                     </div>
                 </nav>
