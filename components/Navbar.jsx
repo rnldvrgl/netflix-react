@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import NetflixLogo from "./NetflixLogo";
 
 const Navbar = (props) => {
     const { username } = props;
@@ -26,7 +27,7 @@ const Navbar = (props) => {
             <div className="flex p-5 px-4 md:px-16 md:items-center md:flex-row">
                 <Link href={'/'} className="flex items-center mb-4 text-base font-medium text-white10 md:mb-0">
                     <div className="w-32 text-red">
-                        Netflix
+                        <NetflixLogo className="h-8 w-28" />
                     </div>
                 </Link>
 
