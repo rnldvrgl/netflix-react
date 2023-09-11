@@ -1,7 +1,22 @@
+"use client"
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Navbar = (props) => {
     const { username } = props;
+
+    const router = useRouter();
+
+    const handleNavigation = (path) => {
+        router.push(path);
+    };
+
+    const links = [
+        { text: "Home", path: "/" },
+        { text: "My List", path: "/browse/my-list" },
+    ];
+
     return (
         <div className="fixed top-0 z-50 w-full text-white10 bg-gradient-to-b from-black via-transparent to-transparent">
             <div className="flex p-5 px-4">
@@ -12,8 +27,15 @@ const Navbar = (props) => {
                 </Link>
 
                 <ul className="flex w-1/2 ml-6 text-base list-none">
-                    <li className="mr-3 text-base font-semibold cursor-pointer">Home</li>
-                    <li className="cursor-pointer">My List</li>
+                    {links.map((link, index) => (
+                        <li
+                            key={index}
+                            className="mr-3 text-base font-semibold cursor-pointer"
+                            onClick={() => handleNavigation(link.path)}
+                        >
+                            {link.text}
+                        </li>
+                    ))}
                 </ul>
 
                 <nav className="flex ml-auto">
