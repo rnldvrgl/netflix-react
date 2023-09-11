@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { IoIosArrowDown } from "react-icons/io";
 
 const Navbar = (props) => {
     const { username } = props;
@@ -43,10 +44,11 @@ const Navbar = (props) => {
 
                 <nav className="flex ml-auto">
                     <div>
-                        <button className="flex items-center overflow-hidden text-white" onClick={() => {
+                        <button className="flex items-center gap-1 overflow-hidden text-white" onClick={() => {
                             setShowDropdown(!showDropdown)
                         }}>
                             <p className="text-base">{username}</p>
+                            <IoIosArrowDown />
                         </button>
                         {showDropdown && (
                             <div className="absolute pt-2 pr-2 mt-2 ml-auto border shadow-sm bg-black50 border-r-1 border-blue">
