@@ -27,7 +27,7 @@ const Navbar = (props) => {
             <div className="flex p-5 px-4 md:px-16 md:items-center md:flex-row">
                 <Link href={'/'} className="flex items-center mb-4 text-base font-medium text-white10 md:mb-0">
                     <div className="w-32 text-red">
-                        <NetflixLogo className="h-8 w-28" />
+                        <NetflixLogo className="w-32 h-9" />
                     </div>
                 </Link>
 
