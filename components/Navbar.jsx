@@ -19,18 +19,18 @@ const Navbar = (props) => {
 
     return (
         <div className="fixed top-0 z-50 w-full text-white10 bg-gradient-to-b from-black via-transparent to-transparent">
-            <div className="flex p-5 px-4">
-                <Link href={'/'} className="flex items-center mb-4 text-base font-medium text-white10">
+            <div className="flex p-5 px-4 md:px-16 md:items-center md:flex-row">
+                <Link href={'/'} className="flex items-center mb-4 text-base font-medium text-white10 md:mb-0">
                     <div className="w-32 text-red">
                         Netflix
                     </div>
                 </Link>
 
-                <ul className="flex w-1/2 ml-6 text-base list-none">
+                <ul className="flex w-1/2 ml-6 text-base list-none md:ml-12">
                     {links.map((link, index) => (
                         <li
                             key={index}
-                            className="mr-3 text-base font-semibold cursor-pointer"
+                            className="mr-3 text-base font-semibold cursor-pointer md:mr-5"
                             onClick={() => handleNavigation(link.path)}
                         >
                             {link.text}
