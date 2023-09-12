@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion"
+import cls from "classnames";
 
 const Card = (props) => {
     const { imgUrl, size } = props;
@@ -17,7 +18,7 @@ const Card = (props) => {
 
     return (
         <div className="mr-1 cursor-pointer">
-            <motion.div className={classMap[size]} whileHover={{ scale: 1.2 }}>
+            <motion.div className={cls("relative inline-block hover:z-[99]", classMap[size])} whileHover={{ scale: 1.2 }}>
                 <Image
                     src={imageSrc}
                     alt="image"
