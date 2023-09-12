@@ -13,8 +13,9 @@ export default function Home() {
       <Billboard title="test" description="testing" imageURL="/images/Kingdom.png" />
 
       {/* Section Cards */}
-      <SectionCards title="Disney" />
-
+      <div className="mt-6">
+        <SectionCards title="Disney" />
+      </div>
     </div>
   )
 }
