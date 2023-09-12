@@ -5,7 +5,7 @@ import SectionCards from '@/components/SectionCards'
 
 export default function Home() {
   return (
-    <div>
+    <div className=''>
       {/* Navbar */}
       <Navbar username="delacruz.ronaldvergel@gmail.com" />
 
