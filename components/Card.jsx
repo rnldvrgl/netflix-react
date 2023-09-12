@@ -20,9 +20,10 @@ const Card = (props) => {
                 <Image
                     src={imageSrc}
                     alt="image"
-                    layout="fill"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     onError={() => {
-                        setImageSrc("/images/Kingdom.png");
+                        setImageSrc("https://images.unsplash.com/photo-1634157703702-3c124b455499?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2128&q=80");
                     }}
                     className="top-0 bottom-0 left-0 right-0 block object-cover object-center max-w-full rounded-md"
                 />
