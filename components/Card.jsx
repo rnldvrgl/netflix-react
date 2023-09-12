@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion"
 
 const Card = (props) => {
     const { imgUrl, size } = props;
@@ -16,7 +17,7 @@ const Card = (props) => {
 
     return (
         <div className="mr-1 cursor-pointer">
-            <div className={classMap[size]}>
+            <motion.div className={classMap[size]} whileHover={{ scale: 1.2 }}>
                 <Image
                     src={imageSrc}
                     alt="image"
@@ -27,8 +28,8 @@ const Card = (props) => {
                     }}
                     className="top-0 bottom-0 left-0 right-0 block object-cover object-center max-w-full rounded-md"
                 />
-            </div>
-        </div>
+            </motion.div>
+        </div >
     );
 };
 
