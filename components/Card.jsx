@@ -1,4 +1,7 @@
+"use client"
+
 import Image from "next/image";
+import { useState } from "react";
 
 const Card = (props) => {
     const { imgUrl, size } = props;
@@ -9,13 +12,18 @@ const Card = (props) => {
         small: "relative w-[218px] min-w-[218px] h-[434px] min-h-[434px]",
     };
 
+    const [imageSrc, setImageSrc] = useState(imgUrl);
+
     return (
         <div className="mr-1 cursor-pointer">
             <div className={classMap[size]}>
                 <Image
-                    src={imgUrl}
+                    src={imageSrc}
                     alt="image"
                     layout="fill"
+                    onError={() => {
+                        setImageSrc("/images/Kingdom.png");
+                    }}
                     className="top-0 bottom-0 left-0 right-0 block object-cover object-center max-w-full rounded-md"
                 />
             </div>

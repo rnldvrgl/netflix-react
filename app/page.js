@@ -10,7 +10,7 @@ export default function Home() {
       <Billboard title="test" description="testing" imageURL="/images/Kingdom.png" />
       <Card imgUrl="/images/Kingdom.png" size="large" />
       <Card imgUrl="/images/Kingdom.png" size="medium" />
-      <Card imgUrl="/images/Kingdom.png" size="small" />
+      <Card imgUrl="/images/Kingdo.png" size="small" />
     </div>
   )
 }
