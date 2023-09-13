@@ -20,7 +20,7 @@ const Card = (props) => {
 
     return (
         <div className="mr-1 cursor-pointer">
-            <motion.div className={cls("relative inline-block hover:z-[99]", classMap[size])} whileHover={{ ...scale }}>
+            <motion.div className={cls("relative inline-block hover:z-10", classMap[size])} whileHover={{ ...scale }}>
                 <Image
                     src={imageSrc}
                     alt="image"
