@@ -10,7 +10,7 @@ const Billboard = ({ title, description, imageURL }) => {
     };
 
     return (
-        <div className='w-100 h-[80vh] relative'>
+        <div className='w-100 h-[80vh] xl:h-screen relative'>
             <div className='absolute z-10 w-100 h-100'>
                 <div className='flex flex-col items-start px-16 mt-24 h-100'>
                     <div className='flex'>
