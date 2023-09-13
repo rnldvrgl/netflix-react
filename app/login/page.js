@@ -1,7 +1,5 @@
 "use client"
 
-import Head from "next/head";
-import Link from "next/link";
 import NetflixLogo from "@/components/NetflixLogo";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -19,7 +17,6 @@ const Login = () => {
     };
 
     const isValidEmail = (email) => {
-        // Regular expression for basic email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     };
@@ -29,7 +26,17 @@ const Login = () => {
 
         if (isValidEmail(email)) {
             if (email === "delacruz.ronaldvergel@gmail.com") {
-                router.push("/");
+                try {
+                    const didToken = await magic.auth.loginWithMagicLink({
+                        email,
+                    });
+                    if (didToken) {
+                        router.push("/");
+                    }
+                } catch (error) {
+                    // Handle errors if required!
+                    console.error("Something went wrong logging in", error);
+                }
             } else {
                 setUserMsg("Something went wrong.");
             }
@@ -39,7 +46,6 @@ const Login = () => {
     };
 
     const handleKeyPress = (e) => {
-        // Check if the Enter key is pressed (key code 13)
         if (e.key === "Enter") {
             handleLoginWithEmail(e);
         }
