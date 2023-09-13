@@ -52,6 +52,19 @@ const Navbar = () => {
         { text: "My List", path: "/browse/my-list" },
     ];
 
+    const handleSignout = async (e) => {
+        e.preventDefault();
+
+        try {
+            await magic.user.logout();
+            console.log(await magic.user.isLoggedIn());
+            router.push("/login");
+        } catch (error) {
+            console.error("Error logging out", error);
+            router.push("/login");
+        }
+    };
+
     return (
         <div
             className={`fixed top-0 z-50 w-full text-white10 ${isScrolled ? "bg-black/80 transition-all duration-300" : "bg-gradient-to-b from-black via-transparent to-transparent transition-all duration-300"
@@ -89,7 +102,7 @@ const Navbar = () => {
                         </button>
                         {showDropdown && (
                             <div className="absolute pt-2 pr-2 mt-2 ml-auto border shadow-sm bg-black50 border-r-1 border-blue">
-                                <Link href={'/login'}>Sign Out</Link>
+                                <button onClick={handleSignout}>Sign Out</button>
                             </div>
                         )}
                     </div>
