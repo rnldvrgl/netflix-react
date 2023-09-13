@@ -59,7 +59,7 @@ const Login = () => {
                     </div>
                     <p className="my-1 text-white20 text-sm font-thin fixed">{userMsg}</p>
                     <button onClick={handleLoginWithEmail} className="bg-red10 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition">
-                        Login
+                        Sign In
                     </button>
                 </div>
             </div>
