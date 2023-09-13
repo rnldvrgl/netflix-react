@@ -1,7 +1,7 @@
 "use client"
 
 import NetflixLogo from "@/components/NetflixLogo";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { magic } from "@/lib/magic-client";
 

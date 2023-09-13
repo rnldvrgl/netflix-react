@@ -5,14 +5,27 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import NetflixLogo from "./NetflixLogo";
+import { magic } from "@/lib/magic-client";
 
-const Navbar = (props) => {
-    const { username } = props;
-
+const Navbar = () => {
     const [showDropdown, setShowDropdown] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
-
+    const [username, setUsername] = useState("");
     const router = useRouter();
+
+    useEffect(() => {
+        async function getUsername() {
+            try {
+                const { email } = await magic.user.getMetadata();
+                if (email) {
+                    setUsername(email);
+                }
+            } catch (error) {
+                console.log("Error retrieving email:", error);
+            }
+        }
+        getUsername();
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {

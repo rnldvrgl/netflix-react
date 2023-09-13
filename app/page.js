@@ -12,7 +12,7 @@ export default async function Home() {
   return (
     <div className='pb-16'>
       {/* Navbar */}
-      <Navbar username="delacruz.ronaldvergel@gmail.com" />
+      <Navbar />
 
       {/* Billboard */}
       <Billboard title="test" description="testing" imageURL="/images/Kingdom.png" />
