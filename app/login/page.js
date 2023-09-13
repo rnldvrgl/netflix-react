@@ -6,28 +6,41 @@ import NetflixLogo from "@/components/NetflixLogo";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-
 const Login = () => {
     const [email, setEmail] = useState("");
     const [userMsg, setUserMsg] = useState("");
-
     const router = useRouter();
 
     const handleOnChangeEmail = (e) => {
         setUserMsg("");
-        console.log("event", e);
         const email = e.target.value;
         setEmail(email);
+    };
+
+    const isValidEmail = (email) => {
+        // Regular expression for basic email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
     };
 
     const handleLoginWithEmail = async (e) => {
         e.preventDefault();
 
-        if (email === "delacruz.ronaldvergel@gmail.com") {
-            router.push("/");
+        if (isValidEmail(email)) {
+            if (email === "delacruz.ronaldvergel@gmail.com") {
+                router.push("/");
+            } else {
+                setUserMsg("Something went wrong.");
+            }
         } else {
-            // show user message
             setUserMsg("Enter a valid email address");
+        }
+    };
+
+    const handleKeyPress = (e) => {
+        // Check if the Enter key is pressed (key code 13)
+        if (e.key === "Enter") {
+            handleLoginWithEmail(e);
         }
     };
 
@@ -50,6 +63,7 @@ const Login = () => {
                             placeholder=" "
                             className="block rounded-md px-6 pt-6 pb-1 text-md text-white bg-neutral-700 appearance-none focus:outline-none focus:ring-0 peer invalid:border-b-1"
                             onChange={handleOnChangeEmail}
+                            onKeyPress={handleKeyPress}
                         />
                         <label
                             htmlFor="email"
