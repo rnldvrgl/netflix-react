@@ -5,6 +5,7 @@ import Link from "next/link";
 import NetflixLogo from "@/components/NetflixLogo";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { magic } from "@/lib/magic-client";
 
 const Login = () => {
     const [email, setEmail] = useState("");
