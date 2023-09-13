@@ -5,7 +5,6 @@ import SectionCards from '@/components/SectionCards'
 
 export default function Home() {
   const disneyVideos = getVideos();
-
   return (
     <div className=''>
       {/* Navbar */}
