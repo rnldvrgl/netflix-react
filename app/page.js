@@ -4,8 +4,11 @@ import Navbar from '@/components/Navbar'
 import SectionCards from '@/components/SectionCards'
 
 export default async function Home() {
-  const disneyVideos = await getVideos();
-  console.log(disneyVideos)
+  const disneyVideos = await getVideos('disney trailer');
+  const productivityVideos = await getVideos('productivity');
+  const travelVideos = await getVideos('travel');
+  const popularVideos = await getVideos('popular');
+
   return (
     <div className=''>
       {/* Navbar */}
@@ -17,8 +20,9 @@ export default async function Home() {
       {/* Section Cards */}
       <div className="mt-6">
         <SectionCards title="Disney" videos={disneyVideos} size="large" />
-        <SectionCards title="Disney" videos={disneyVideos} size="medium" />
-        <SectionCards title="Disney" videos={disneyVideos} size="small" />
+        <SectionCards title="Travel" videos={travelVideos} size="small" />
+        <SectionCards title="Productivity" videos={productivityVideos} size="medium" />
+        <SectionCards title="Popular" videos={popularVideos} size="small" />
       </div>
     </div>
   )
