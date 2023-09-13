@@ -3,8 +3,34 @@
 import Head from "next/head";
 import Link from "next/link";
 import NetflixLogo from "@/components/NetflixLogo";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 
 const Login = () => {
+    const [email, setEmail] = useState("");
+    const [userMsg, setUserMsg] = useState("");
+
+    const router = useRouter();
+
+    const handleOnChangeEmail = (e) => {
+        setUserMsg("");
+        console.log("event", e);
+        const email = e.target.value;
+        setEmail(email);
+    };
+
+    const handleLoginWithEmail = async (e) => {
+        e.preventDefault();
+
+        if (email === "delacruz.ronaldvergel@gmail.com") {
+            router.push("/");
+        } else {
+            // show user message
+            setUserMsg("Enter a valid email address");
+        }
+    };
+
     return (
         <div className="min-h-screen bg-signin-bg bg-no-repeat bg-center bg-fixed bg-cover">
             <div className="flex items-center justify-center min-h-screen bg-black bg-opacity-50">
@@ -23,6 +49,7 @@ const Login = () => {
                             type="text"
                             placeholder=" "
                             className="block rounded-md px-6 pt-6 pb-1 text-md text-white bg-neutral-700 appearance-none focus:outline-none focus:ring-0 peer invalid:border-b-1"
+                            onChange={handleOnChangeEmail}
                         />
                         <label
                             htmlFor="email"
@@ -30,7 +57,8 @@ const Login = () => {
                             Email address
                         </label>
                     </div>
-                    <button onClick={() => { }} className="bg-red10 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition">
+                    <p className="my-1 text-white20 text-sm font-thin fixed">{userMsg}</p>
+                    <button onClick={handleLoginWithEmail} className="bg-red10 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition">
                         Login
                     </button>
                 </div>
