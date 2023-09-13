@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'signin-bg': "url('/images/signin-bg.jpeg')",
+      },
       colors: {
         black: 'rgb(0, 0, 0)',
         black10: '#181818',

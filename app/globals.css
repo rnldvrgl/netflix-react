@@ -14,29 +14,3 @@ body {
 ::-webkit-scrollbar {
   @apply w-0 bg-transparent
 }
-
-p {
-  @apply font-[500]
-}
-
-h1 {
-  @apply font-[700]
-}
-
-h3 {
-  @apply font-[600]
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-hr,
-p,
-pre,
-ul,
-li {
-  @apply m-0
-}
