@@ -15,7 +15,7 @@ export default async function Home() {
       <Navbar />
 
       {/* Billboard */}
-      <Billboard title="test" description="testing" imageURL="/images/Kingdom.png" />
+      <Billboard title="Pixar" description="Diney and Pixar's Luca | Official Trailer | Disney+" imageURL="/images/Kingdom.png" />
 
       {/* Section Cards */}
       <div className="mt-6 flex flex-col gap-8">
