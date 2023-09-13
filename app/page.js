@@ -5,7 +5,7 @@ import SectionCards from '@/components/SectionCards'
 
 export default async function Home() {
   const disneyVideos = await getVideos();
-
+  console.log(disneyVideos)
   return (
     <div className=''>
       {/* Navbar */}
