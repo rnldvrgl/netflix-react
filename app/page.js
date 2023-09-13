@@ -3,23 +3,8 @@ import { getVideos } from "@/lib/videos";
 import Navbar from '@/components/Navbar'
 import SectionCards from '@/components/SectionCards'
 
-export async function getServerSideProps(context) {
-  try {
-    const disneyVideos = await getVideos();
-
-    return {
-      props: { disneyVideos }
-    };
-  } catch (error) {
-    console.error("Error fetching Disney videos:", error);
-    return {
-      props: { disneyVideos: [] } // Provide a default empty array if there's an error
-    };
-  }
-}
-
-export default function Home({ disneyVideos }) {
-  console.log("Disney Videos:", disneyVideos);
+export default async function Home() {
+  const disneyVideos = await getVideos();
 
   return (
     <div className=''>
@@ -33,6 +18,7 @@ export default function Home({ disneyVideos }) {
       <div className="mt-6">
         <SectionCards title="Disney" videos={disneyVideos} size="large" />
         <SectionCards title="Disney" videos={disneyVideos} size="medium" />
+        <SectionCards title="Disney" videos={disneyVideos} size="small" />
       </div>
     </div>
   )
