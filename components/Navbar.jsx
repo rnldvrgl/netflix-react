@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import NetflixLogo from "./NetflixLogo";
 
@@ -10,8 +10,25 @@ const Navbar = (props) => {
     const { username } = props;
 
     const [showDropdown, setShowDropdown] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
     const router = useRouter();
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
 
     const handleNavigation = (path) => {
         router.push(path);
@@ -23,7 +40,10 @@ const Navbar = (props) => {
     ];
 
     return (
-        <div className="fixed top-0 z-50 w-full text-white10 bg-gradient-to-b from-black via-transparent to-transparent">
+        <div
+            className={`fixed top-0 z-50 w-full text-white10 ${isScrolled ? "bg-black/80 transition-all duration-300" : "bg-gradient-to-b from-black via-transparent to-transparent transition-all duration-300"
+                }`}
+        >
             <div className="flex p-5 px-4 md:px-16 md:items-center md:flex-row">
                 <Link href={'/'} className="flex items-center mb-4 text-base font-medium text-white10 md:mb-0">
                     <div className="w-32 text-red">
@@ -45,9 +65,12 @@ const Navbar = (props) => {
 
                 <nav className="flex ml-auto">
                     <div>
-                        <button className="flex items-center gap-1 overflow-hidden text-white" onClick={() => {
-                            setShowDropdown(!showDropdown)
-                        }}>
+                        <button
+                            className="flex items-center gap-1 overflow-hidden text-white"
+                            onClick={() => {
+                                setShowDropdown(!showDropdown);
+                            }}
+                        >
                             <p className="text-base">{username}</p>
                             <IoIosArrowDown />
                         </button>
@@ -61,6 +84,6 @@ const Navbar = (props) => {
             </div>
         </div>
     );
-}
+};
 
 export default Navbar;
