@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
       if (isLoggedIn) {
         router.push("/");
       } else {
-        router.push("/login");
+        router.push("/sign-in");
       }
     };
 
