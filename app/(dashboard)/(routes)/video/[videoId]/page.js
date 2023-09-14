@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from "react";
 import clsx from "classnames";
 import { getYoutubeVideoById } from "@/lib/videos";
+import Navbar from "@/components/Navbar";
 
 const Video = () => {
     const router = useRouter();
@@ -38,11 +39,12 @@ const Video = () => {
 
     return (
         <div>
+            <Navbar />
             <Modal
                 isOpen={true}
                 contentLabel="Watch the video"
                 onRequestClose={() => router.back()}
-                className="absolute left-0 right-0 my-0 mx-auto w-11/12 bottom-10 h-fit bg-black40 top-[10%] outline-none rounded-xl border border-white"
+                className="absolute left-0 right-0 my-0 mx-auto w-11/12 bottom-10 h-fit bg-black40 top-[10%] outline-none rounded-xl border border-white lg:w-1/2"
                 overlayClassName="top-0 left-0 right-0 bottom-0 w-full h-screen"
             >
                 <iframe
@@ -54,9 +56,9 @@ const Video = () => {
                     className="shadow rounded-t-xl"
                 ></iframe>
 
-                <div className="px-12 py-0 my-5">
+                <div className="px-12 py-0 my-5 lg:px-4">
                     <div className="grid grid-cols-[minmax(0,2fr),minmax(0,1fr)] gap-x-8">
-                        <div className="overflow-y-scroll max-h-96">
+                        <div className="overflow-y-scroll max-h-96 px-4">
                             <p className="mb-2 text-lg text-green10">{publishTime}</p>
                             <p className="text-lg text-white10">{title}</p>
                             <p className="mt-3 mb-2 text-sm">{description}</p>
