@@ -3,6 +3,7 @@ import { getVideos, getPopularVideos, getBillboardVideo } from "@/lib/videos";
 import Navbar from '@/components/Navbar'
 import SectionCards from '@/components/SectionCards'
 import React from 'react';
+import { startFetchMyQuery } from '@/lib/db/hasura';
 
 
 export default async function Home() {
@@ -10,6 +11,8 @@ export default async function Home() {
   const productivityVideos = await getVideos('productivity');
   const travelVideos = await getVideos('travel');
   const popularVideos = await getPopularVideos();
+
+  startFetchMyQuery();
   return (
     <>
       {/* Navbar */}
