@@ -31,7 +31,8 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={bebas.className}>{children}</body>
+      <body className={bebas.className}>{children}
+      </body>
     </html>
   )
 }
