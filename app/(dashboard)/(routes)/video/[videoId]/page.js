@@ -1,8 +1,14 @@
+"use client"
+
+import { useParams, useRouter } from 'next/navigation'
+
 const Video = () => {
+    const router = useRouter();
+    const params = useParams();
+    const videoId = params.videoId;
+
     return (
-        <div>
-            Video
-        </div>
+        <div>video {videoId} </div>
     );
 }
 
