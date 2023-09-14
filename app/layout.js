@@ -10,7 +10,7 @@ const bebas = Bebas_Neue({ subsets: ['latin'], weight: ['400'] });
 
 export const metadata = {
   title: 'Netflix Clone | Next.js',
-  description: 'Netflix Clone using React JS, Next JS, Tailwind CSS',
+  description: 'Netflix Clone using Next JS, Tailwind CSS',
 };
 
 export default function RootLayout({ children }) {
@@ -20,7 +20,6 @@ export default function RootLayout({ children }) {
     const isLoggedIn = async () => {
       try {
         const isAuthenticated = await magic.user.isLoggedIn();
-
 
         if (!isAuthenticated) {
           router.push('/sign-in');
