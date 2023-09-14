@@ -17,10 +17,10 @@ export default function RootLayout({ children }) {
   const router = useRouter();
 
   useEffect(() => {
-    console.log(router)
     const isLoggedIn = async () => {
       try {
         const isAuthenticated = await magic.user.isLoggedIn();
+
 
         if (!isAuthenticated) {
           router.push('/sign-in');
