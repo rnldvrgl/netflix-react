@@ -1,9 +1,9 @@
 "use client"
 
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getPopularVideos } from "@/lib/videos";
-import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import PlayButton from './PlayButton';
+import Image from 'next/image';
 
 
 const Billboard = () => {
@@ -28,12 +28,12 @@ const Billboard = () => {
     return (
         <div className="relative h-screen">
             {popularVideo && (
-                <video
-                    poster={popularVideo.imgUrl}
+                <Image
+                    fill
+                    alt=""
                     className="w-full h-full object-cover brightness-[60%] transition duration-500"
-                    autoPlay muted loop
-                    src={`https://www.youtube.com/watch?v=${popularVideo.id}`}
-                ></video>
+                    src={popularVideo.imgUrl}
+                />
             )}
             <div className="absolute top-[30%] md:top-[40%] ml-4 md:ml-16">
                 {popularVideo && (
