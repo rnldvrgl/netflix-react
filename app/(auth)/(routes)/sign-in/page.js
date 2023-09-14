@@ -1,7 +1,7 @@
 "use client"
 
 import NetflixLogo from "@/components/NetflixLogo";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { magic } from "@/lib/magic-client";
 
@@ -58,23 +58,23 @@ const Login = () => {
     };
 
     return (
-        <div className="min-h-screen bg-signin-bg bg-no-repeat bg-center bg-fixed bg-cover">
+        <div className="min-h-screen bg-fixed bg-center bg-no-repeat bg-cover bg-signin-bg">
             <div className="flex items-center justify-center min-h-screen bg-black bg-opacity-50">
-                <nav className="px-12 py-5 fixed top-0 left-0">
-                    <div className="text-red10 w-32">
+                <nav className="fixed top-0 left-0 px-12 py-5">
+                    <div className="w-32 text-red10">
                         <NetflixLogo />
                     </div>
                 </nav>
-                <div className="max-w-md w-3/5 rounded-md bg-black bg-opacity-70 p-16">
-                    <h2 className="text-white text-4xl mb-8 font-semibold">
+                <div className="w-3/5 max-w-md p-16 bg-black rounded-md bg-opacity-70">
+                    <h2 className="mb-8 text-4xl font-semibold text-white">
                         Sign In
                     </h2>
-                    <div className="flex flex-col gap-4 relative">
+                    <div className="relative flex flex-col gap-4">
                         <input
                             id="email"
                             type="text"
                             placeholder=" "
-                            className="block rounded-md px-6 pt-6 pb-1 text-md text-white bg-neutral-700 appearance-none focus:outline-none focus:ring-0 peer invalid:border-b-1"
+                            className="block px-6 pt-6 pb-1 text-white rounded-md appearance-none text-md bg-neutral-700 focus:outline-none focus:ring-0 peer invalid:border-b-1"
                             onChange={handleOnChangeEmail}
                             onKeyPress={handleKeyPress}
                         />
@@ -84,8 +84,8 @@ const Login = () => {
                             Email address
                         </label>
                     </div>
-                    <p className="my-1 text-white20 text-sm font-thin fixed">{userMsg}</p>
-                    <button onClick={handleLoginWithEmail} className="bg-red10 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition">
+                    <p className="fixed my-1 text-sm font-thin text-white20">{userMsg}</p>
+                    <button onClick={handleLoginWithEmail} className="w-full py-3 mt-10 text-white transition rounded-md bg-red10 hover:bg-red-700">
                         {isLoading ? "Loading ..." : "Sign In"}
                     </button>
                 </div>

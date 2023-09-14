@@ -16,12 +16,12 @@ const Navbar = () => {
     useEffect(() => {
         async function getUsername() {
             try {
-                const { email } = await magic.user.getMetadata();
+                const { email } = await magic.user.getInfo();
                 if (email) {
                     setUsername(email);
                 }
             } catch (error) {
-                console.log("Error retrieving email:", error);
+                console.error("Error retrieving email:", error);
             }
         }
         getUsername();
