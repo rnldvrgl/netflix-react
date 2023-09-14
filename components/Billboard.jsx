@@ -25,11 +25,6 @@ const Billboard = () => {
         fetchPopularVideo();
     }, []);
 
-    const handleOpenModal = useCallback(() => {
-        // openModal(data?.id);
-        // console.log(popularVideo.id)
-    }, []);
-
     return (
         <div className="relative h-screen">
             {popularVideo && (
