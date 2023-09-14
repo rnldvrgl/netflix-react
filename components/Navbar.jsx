@@ -99,8 +99,8 @@ const Navbar = () => {
                             <IoIosArrowDown />
                         </button>
                         {showDropdown && (
-                            <div className="absolute pt-2 pr-2 mt-2 ml-auto border shadow-sm bg-black50 border-r-1 border-blue">
-                                <button onClick={handleSignout}>Sign Out</button>
+                            <div className="absolute p-2 mt-2 ml-auto border shadow-sm bg-black50 border-r-1 border-blue">
+                                <button onClick={handleSignout} >Sign Out</button>
                             </div>
                         )}
                     </div>
