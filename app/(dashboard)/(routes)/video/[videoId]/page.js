@@ -2,25 +2,39 @@
 
 import Modal from "react-modal";
 import { useParams, useRouter } from 'next/navigation';
-import React from "react";
+import React, { useEffect, useState } from "react";
 import clsx from "classnames";
+import { getYoutubeVideoById } from "@/lib/videos";
 
 const Video = () => {
     const router = useRouter();
     const params = useParams();
-    const videoId = params.videoId;
+    const { videoId } = params;
+    const [video, setVideo] = useState(null);
 
-    const video = {
-        title: "Hi cute dog",
-        publishTime: "1990-01-01",
-        description:
-            "A big red dog that is super cute, can he get any bigger?",
-        channelTitle: "Paramount Pictures",
-        viewCount: 10000,
-    };
+    useEffect(() => {
 
-    const { title, publishTime, description, channelTitle, viewCount } = video;
+        const getYoutubeVideo = async () => {
+            const videoArray = await getYoutubeVideoById(videoId);
+            if (videoArray.length > 0) {
+                setVideo(videoArray[0]);
+            }
+        }
 
+        getYoutubeVideo();
+    }, [videoId]);
+
+    if (!video) {
+        return <div>Loading...</div>;
+    }
+
+    const {
+        title,
+        publishTime,
+        description,
+        channelTitle,
+        statistics: { viewCount } = { viewCount: 0 },
+    } = video;
 
     return (
         <div>
@@ -29,7 +43,7 @@ const Video = () => {
                 contentLabel="Watch the video"
                 onRequestClose={() => router.back()}
                 className="absolute left-0 right-0 my-0 mx-auto w-11/12 bottom-10 bg-black40 top-[10%] outline-none rounded-xl border border-shadow10"
-                overlayClassName="top-0 left-0 right-0 botton-0 w-full h-screen"
+                overlayClassName="top-0 left-0 right-0 bottom-0 w-full h-screen"
             >
                 <iframe
                     id="ytplayer"
