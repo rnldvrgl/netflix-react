@@ -79,7 +79,7 @@ const Navbar = () => {
                     {links.map((link, index) => (
                         <li
                             key={index}
-                            className="mr-3 text-base font-thin tracking-wider uppercase cursor-pointer md:mr-5"
+                            className="mr-3 text-base cursor-pointer font-base md:mr-5"
                             onClick={() => handleNavigation(link.path)}
                         >
                             {link.text}
@@ -95,7 +95,7 @@ const Navbar = () => {
                                 setShowDropdown(!showDropdown);
                             }}
                         >
-                            <p className="text-base">{username}</p>
+                            <p className="text-base uppercase">{username}</p>
                             <IoIosArrowDown />
                         </button>
                         {showDropdown && (

@@ -1,12 +1,12 @@
 "use client"
 
 import './globals.css';
-import { Bebas_Neue } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import { useEffect } from 'react';
 import { magic } from '@/lib/magic-client';
 import { useRouter } from 'next/navigation';
 
-const bebas = Bebas_Neue({ subsets: ['latin'], weight: ['400'] });
+const poppins = Poppins({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'] });
 
 export const metadata = {
   title: 'Netflix Clone | Next.js',
@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={bebas.className}>{children}</body>
+      <body className={poppins.className}>{children}</body>
     </html>
   );
 }
