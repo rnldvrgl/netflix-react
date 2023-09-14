@@ -2,8 +2,8 @@
 
 import Modal from "react-modal";
 import { useParams, useRouter } from 'next/navigation';
+import React from "react";
 import clsx from "classnames";
-
 
 const Video = () => {
     const router = useRouter();
@@ -14,12 +14,13 @@ const Video = () => {
         title: "Hi cute dog",
         publishTime: "1990-01-01",
         description:
-            "A big red dog that is super cute, can he get any bigger? A big red dog that is super cute, can he get any bigger? A big red dog that is super cute, can he get any bigger? A big red dog that is super cute, can he get any bigger? A big red dog that is super cute, can he get any bigger? A big red dog that is super cute, can he get any bigger? A big red dog that is super cute, can he get any bigger? A big red dog that is super cute, can he get any bigger? A big red dog that is super cute, can he get any bigger? A big red dog that is super cute, can he get any bigger? A big red dog that is super cute, can he get any bigger? A big red dog that is super cute, can he get any bigger? A big red dog that is super cute, can he get any bigger? A big red dog that is super cute, can he get any bigger? A big red dog that is super cute, can he get any bigger?",
+            "A big red dog that is super cute, can he get any bigger?",
         channelTitle: "Paramount Pictures",
         viewCount: 10000,
     };
 
     const { title, publishTime, description, channelTitle, viewCount } = video;
+
 
     return (
         <div>
