@@ -23,6 +23,7 @@ const Billboard = () => {
         }
 
         fetchPopularVideo();
+        console.log(fetchPopularVideo())
     }, []);
 
     return (
@@ -38,12 +39,12 @@ const Billboard = () => {
             {popularVideo && (
                 <div className="absolute top-[30%] md:top-[40%] ml-4 md:ml-16">
 
-                    <p className="text-white text-1xl md:text-4xl h-full w-[50%] lg:text-6xl font-bold drop-shadow-xl">
+                    <p className="text-white text-1xl md:text-4xl h-full w-[50%] lg:text-5xl xl:text-6xl font-bold drop-shadow-xl">
                         {popularVideo.title}
                     </p>
 
-                    <p className="text-white text-[8px] md:text-lg mt-3 md:mt-8 w-[90%] md:w-[80%] lg:w-[50%] drop-shadow-xl">
-                        {popularVideo.description.split('. ')[0] + '.'}
+                    <p className="text-white text-[8px] md:text-lg lg:text-xl xl:text-2xl mt-3 md:mt-8 w-[90%] md:w-[80%] lg:w-[50%] max-w-5xl drop-shadow-xl truncate">
+                        {popularVideo.description}
                     </p>
 
 
