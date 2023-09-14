@@ -1,14 +1,14 @@
 "use client"
 
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { getPopularVideos } from "@/lib/videos";
-import { PlayIcon } from "@heroicons/react/24/solid";
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import PlayButton from './PlayButton';
 
 
 const Billboard = () => {
     const [popularVideo, setPopularVideo] = useState(null);
+    const [openModal, setOpenModal] = useState(false);
 
     useEffect(() => {
         async function fetchPopularVideo() {
@@ -25,8 +25,13 @@ const Billboard = () => {
         fetchPopularVideo();
     }, []);
 
+    const handleOpenModal = useCallback(() => {
+        // openModal(data?.id);
+        // console.log(popularVideo.id)
+    }, []);
+
     return (
-        <div className="relative h-[80vh] xl:h-screen">
+        <div className="relative h-screen">
             {popularVideo && (
                 <video
                     poster={popularVideo.imgUrl}

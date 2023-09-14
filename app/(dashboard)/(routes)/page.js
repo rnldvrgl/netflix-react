@@ -11,7 +11,7 @@ export default async function Home() {
   const travelVideos = await getVideos('travel');
   const popularVideos = await getPopularVideos();
   return (
-    <div className='pb-16' >
+    <>
       {/* Navbar */}
       < Navbar />
 
@@ -19,7 +19,7 @@ export default async function Home() {
       <Billboard />
 
       {/* Section Cards */}
-      <div className="flex flex-col gap-8 mt-6" >
+      <div className="flex flex-col pb-12 mt-12 gap-y-12" >
         <SectionCards title="Disney" videos={disneyVideos} size="large" />
         <SectionCards title="Travel" videos={travelVideos} size="small" />
         <SectionCards
@@ -29,6 +29,6 @@ export default async function Home() {
         />
         <SectionCards title="Popular" videos={popularVideos} size="small" />
       </div >
-    </div >
+    </ >
   )
 }
