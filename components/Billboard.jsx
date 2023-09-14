@@ -35,22 +35,24 @@ const Billboard = () => {
                     src={popularVideo.imgUrl}
                 />
             )}
-            <div className="absolute top-[30%] md:top-[40%] ml-4 md:ml-16">
-                {popularVideo && (
-                    <p className="text-white text-1xl md:text-5xl h-full w-[50%] lg:text-6xl font-bold drop-shadow-xl">
+            {popularVideo && (
+                <div className="absolute top-[30%] md:top-[40%] ml-4 md:ml-16">
+
+                    <p className="text-white text-1xl md:text-4xl h-full w-[50%] lg:text-6xl font-bold drop-shadow-xl">
                         {popularVideo.title}
                     </p>
-                )}
-                {popularVideo && (
+
                     <p className="text-white text-[8px] md:text-lg mt-3 md:mt-8 w-[90%] md:w-[80%] lg:w-[50%] drop-shadow-xl">
                         {popularVideo.description.split('. ')[0] + '.'}
                     </p>
-                )}
 
-                <div className="mt-3 md:mt-4">
-                    <PlayButton movieId={popularVideo?.id} />
+
+                    <div className="mt-3 md:mt-4">
+                        <PlayButton movieId={popularVideo?.id} />
+                    </div>
+
                 </div>
-            </div>
+            )}
         </div>
     );
 };
