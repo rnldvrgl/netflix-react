@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { getPopularVideos } from "@/lib/videos";
 import { PlayIcon } from "@heroicons/react/24/solid";
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
+import PlayButton from './PlayButton';
 
 
 const Billboard = () => {
@@ -47,7 +48,7 @@ const Billboard = () => {
                 )}
 
                 <div className="flex flex-row items-center gap-3 mt-3 md:mt-4">
-                    {/* <PlayButton movieId={data?.id} /> */}
+                    <PlayButton movieId={popularVideo?.id} />
                     <button
                         // onClick={handleOpenModal}
                         className="flex flex-row items-center w-auto px-2 py-1 text-xs font-semibold text-white transition bg-white rounded-md bg-opacity-30 md:py-2 md:px-4 lg:text-lg hover:bg-opacity-20"
