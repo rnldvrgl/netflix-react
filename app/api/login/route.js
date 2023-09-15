@@ -10,8 +10,9 @@ export async function POST(request) {
 
         const didToken = authorizationHeader ? authorizationHeader.substr(7) : "";
 
-        const metadata = await mAdmin.users.getMetadataByToken(didToken);
-
+        // const metadata = await mAdmin.users.getMetadataByToken(didToken);
+        console.log(didToken)
+        console.log(jwt.decode(didToken, { complete: true }))
         // const token = jwt.sign(
         //     {
         //         ...metadata,
