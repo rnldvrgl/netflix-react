@@ -1,16 +1,16 @@
 import { NextResponse } from "next/server";
-import { magicAdmin, mAdmin } from "@/lib/magic";
+import { magicAdmin } from "@/lib/magic";
 import jwt from "jsonwebtoken";
 
 export async function POST(request) {
     try {
-        // const auth = request.headers;
 
-        // console.log(auth)
-        // const didToken = auth ? auth.substr(7) : "";
-        const didToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicm9uYWxkIiwiaWF0IjoxNjk0NzQzMjg0LCJleHAiOjE2OTUzNDgxMDcsImh0dHBzOi8vaGFzdXJhLmlvL2p3dC9jbGFpbXMiOnsieC1oYXN1cmEtYWxsb3dlZC1yb2xlcyI6WyJ1c2VyIiwiYWRtaW4iXSwieC1oYXN1cmEtZGVmYXVsdC1yb2xlIjoidXNlciIsIngtaGFzdXJhLXVzZXItaWQiOiJyb25hbGQifX0.XGhqImu7MEpevdUzCfQVZzPU1Fig1l1dw4RPfUIWlOY;
-        const metadata = magicAdmin.users.getMetadataByToken(didToken);
-        console.log(metadata)
+        const authorizationHeader = request.headers.get('Authorization');
+
+
+        const didToken = authorizationHeader ? authorizationHeader.substr(7) : "";
+
+        const metadata = await mAdmin.users.getMetadataByToken(didToken);
 
         // const token = jwt.sign(
         //     {
@@ -25,7 +25,6 @@ export async function POST(request) {
         //     },
         //     "thisisasecretthisisasecret090800"
         // );
-        // console.log("Metadata:", metadata);
 
         return NextResponse.json({ status: 200, done: true });
     } catch (error) {
