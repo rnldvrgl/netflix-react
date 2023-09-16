@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { magicAdmin } from "@/lib/magic";
 import jwt from "jsonwebtoken";
 import { isNewUser, createNewUser } from "@/lib/db/hasura";
+import { setTokenCookie } from "@/lib/cookies";
 
 export async function POST(request) {
     try {
@@ -32,6 +33,8 @@ export async function POST(request) {
             const createNewUserMutation = await createNewUser(token, metadata);
 
             console.log(createNewUserMutation)
+
+            const cookie = setTokenCookie(token);
 
             return NextResponse.json({ done: true, status: 200, message: "New User Created" });
         } else {
