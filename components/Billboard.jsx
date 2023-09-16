@@ -23,7 +23,6 @@ const Billboard = () => {
         }
 
         fetchPopularVideo();
-        console.log(fetchPopularVideo())
     }, []);
 
     return (

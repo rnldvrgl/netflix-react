@@ -12,7 +12,7 @@ export default async function Home() {
   const travelVideos = await getVideos('travel');
   const popularVideos = await getPopularVideos();
 
-  startFetchMyQuery();
+
   return (
     <>
       {/* Navbar */}
