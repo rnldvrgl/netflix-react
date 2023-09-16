@@ -26,14 +26,9 @@ export async function POST(request) {
             process.env.JWT_SECRET
         );
 
-        const isNewUserQuery = await isNewUser(token);
+        const isNewUserQuery = await isNewUser(token, metadata.issuer);
 
-
-        const response = isNewUserQuery
-            ? { data: isNewUserQuery, status: 200, done: true }
-            : { data: token, status: 200, done: true };
-
-        return NextResponse.json(response);
+        return NextResponse.json({ isNewUserQuery, status: 200, done: true });
     } catch (error) {
         console.error("Something went wrong logging in", error);
         return NextResponse.json({ status: 500, done: false });

@@ -3,8 +3,6 @@ import { getVideos, getPopularVideos, getBillboardVideo } from "@/lib/videos";
 import Navbar from '@/components/Navbar'
 import SectionCards from '@/components/SectionCards'
 import React from 'react';
-import { startFetchMyQuery } from '@/lib/db/hasura';
-
 
 export default async function Home() {
   const disneyVideos = await getVideos('disney trailer');

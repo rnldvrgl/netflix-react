@@ -16,8 +16,7 @@ const Navbar = () => {
     useEffect(() => {
         async function getUsername() {
             try {
-                const { email, issuer } = await magic.user.getInfo();
-                const didToken = await magic.user.getIdToken();
+                const { email } = await magic.user.getInfo();
                 if (email) {
                     setUsername(email);
                 }
