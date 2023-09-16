@@ -29,17 +29,15 @@ export async function POST(request) {
 
         const isNewUserQuery = await isNewUser(token, metadata.issuer);
 
-        if (isNewUserQuery) {
-            const createNewUserMutation = await createNewUser(token, metadata);
+        isNewUserQuery && (await createNewUser(token, metadata));
 
-            console.log(createNewUserMutation)
+        setTokenCookie(token);
 
-            const cookie = setTokenCookie(token);
+        console.log(NextResponse.next().cookies.set('cookies', setTokenCookie(token)))
 
-            return NextResponse.json({ done: true, status: 200, message: "New User Created" });
-        } else {
-            return NextResponse.json({ done: true, status: 200, message: "Not a New User" });
-        }
+        const message = isNewUserQuery ? "New User Created" : "Not a New User";
+
+        return NextResponse.json({ done: true, status: 200, message });
 
     } catch (error) {
         console.error("Something went wrong logging in", error);
