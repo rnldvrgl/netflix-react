@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { magicAdmin } from "@/lib/magic";
 import jwt from "jsonwebtoken";
-import { isNewUser } from "@/lib/db/hasura";
+import { isNewUser, createNewUser } from "@/lib/db/hasura";
 
 export async function POST(request) {
     try {
@@ -28,7 +28,16 @@ export async function POST(request) {
 
         const isNewUserQuery = await isNewUser(token, metadata.issuer);
 
-        return NextResponse.json({ isNewUserQuery, metadata, status: 200, done: true });
+        if (isNewUserQuery) {
+            const createNewUserMutation = await createNewUser(token, metadata);
+
+            console.log(createNewUserMutation)
+
+            return NextResponse.json({ done: true, status: 200, message: "New User Created" });
+        } else {
+            return NextResponse.json({ done: true, status: 200, message: "Not a New User" });
+        }
+
     } catch (error) {
         console.error("Something went wrong logging in", error);
         return NextResponse.json({ status: 500, done: false });
