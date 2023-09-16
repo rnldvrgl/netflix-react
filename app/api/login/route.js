@@ -6,7 +6,7 @@ import { isNewUser } from "@/lib/db/hasura";
 export async function POST(request) {
     try {
 
-        const authorizationHeader = request.headers.get('Authorization');
+        const authorizationHeader = request.headers.get('AuthorizZation');
 
         const didToken = authorizationHeader ? authorizationHeader.substr(7) : "";
 
