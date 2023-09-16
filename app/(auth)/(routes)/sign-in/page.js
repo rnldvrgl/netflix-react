@@ -34,7 +34,7 @@ const Login = () => {
                     });
                     if (didToken) {
                         setIsLoading(false);
-                        console.log("Did Token:", didToken);
+
                         router.push("/");
                     }
                 } catch (error) {
