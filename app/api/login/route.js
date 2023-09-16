@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { magicAdmin } from "@/lib/magic";
 import jwt from "jsonwebtoken";
+import { isNewUser } from "@/lib/db/hasura";
 
 export async function POST(request) {
     try {
@@ -22,11 +23,13 @@ export async function POST(request) {
                     "x-hasura-user-id": `${metadata.issuer}`,
                 },
             },
-            "thisisasecretthisisasecret090800"
+            process.env.JWT_SECRET
         );
 
+        const isNewUserQuery = await isNewUser(token);
 
-        return NextResponse.json({ didToken, token, status: 200, done: true });
+
+        return NextResponse.json({ isNewUserQuery, status: 200, done: true });
     } catch (error) {
         console.error("Something went wrong logging in", error);
         return NextResponse.json({ status: 500, done: false });
