@@ -28,7 +28,7 @@ export async function POST(request) {
 
         const isNewUserQuery = await isNewUser(token, metadata.issuer);
 
-        return NextResponse.json({ isNewUserQuery, status: 200, done: true });
+        return NextResponse.json({ isNewUserQuery, metadata, status: 200, done: true });
     } catch (error) {
         console.error("Something went wrong logging in", error);
         return NextResponse.json({ status: 500, done: false });
