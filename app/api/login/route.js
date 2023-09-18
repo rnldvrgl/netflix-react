@@ -35,7 +35,6 @@ export async function POST(request) {
 
         const message = isNewUserQuery ? "New User Created" : "Not a New User";
 
-
         return NextResponse.json({ status: 200, message, done: true }, {
             headers: {
                 "Set-Cookie": tokenCookie,
