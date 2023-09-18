@@ -60,7 +60,7 @@ const Video = () => {
                     className="shadow rounded-t-xl"
                 ></iframe>
 
-                <div className="flex mb-3 absolute top-[35%] pl-4">
+                <div className="absolute flex pl-4 mb-3 top-1/4 gap-x-4">
                     <div className={btnWrapper}>
                         <button>
                             <Like />
