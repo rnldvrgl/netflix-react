@@ -17,6 +17,7 @@ const Navbar = () => {
         async function getUsername() {
             try {
                 const { email } = await magic.user.getInfo();
+
                 if (email) {
                     setUsername(email);
                 }
