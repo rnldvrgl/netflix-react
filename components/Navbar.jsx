@@ -75,7 +75,7 @@ const Navbar = () => {
                     </div>
                 </Link>
 
-                <ul className="flex items-center w-1/2 ml-6 text-sm list-none lg:text-base md:ml-12">
+                <ul className="flex items-center w-1/2 ml-6 text-xs list-none lg:text-sm md:ml-12">
                     {links.map((link, index) => (
                         <li
                             key={index}
@@ -87,7 +87,7 @@ const Navbar = () => {
                     ))}
                 </ul>
 
-                <nav className="relative flex ml-auto text-sm lg:text-base ">
+                <nav className="relative flex ml-auto text-xs lg:text-sm ">
                     <div>
                         <button
                             className="flex items-center gap-1 overflow-hidden text-white"
