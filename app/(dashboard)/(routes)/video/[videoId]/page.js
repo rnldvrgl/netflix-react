@@ -8,7 +8,6 @@ import Navbar from "@/components/Navbar";
 import Like from "@/components/icons/Like";
 import Dislike from "@/components/icons/Dislike";
 import YouTube from 'react-youtube';
-import Image from "next/image";
 
 const Video = () => {
     const router = useRouter();
