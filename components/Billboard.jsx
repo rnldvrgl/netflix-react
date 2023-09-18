@@ -8,7 +8,6 @@ import Image from 'next/image';
 
 const Billboard = () => {
     const [popularVideo, setPopularVideo] = useState(null);
-    const [openModal, setOpenModal] = useState(false);
 
     useEffect(() => {
         async function fetchPopularVideo() {
@@ -30,24 +29,23 @@ const Billboard = () => {
             {popularVideo && (
                 <Image
                     fill
-                    alt=""
-                    className="w-full h-full object-cover brightness-[60%] transition duration-500"
+                    alt="Billboard Image"
+                    className="object-cover brightness-[60%] transition duration-500"
                     src={popularVideo.imgUrl}
                 />
             )}
             {popularVideo && (
-                <div className="absolute top-[30%] md:top-[40%] ml-4 md:ml-16">
+                <div className="absolute top-[45%] md:top-[35%] px-6 md:px-8 md:w-[80%] lg:w-[70%] max-w-5xl">
 
-                    <p className="text-white text-1xl md:text-4xl h-full w-[50%] lg:text-5xl xl:text-6xl font-bold drop-shadow-xl">
+                    <p className="h-full text-3xl font-bold text-white lg:text-4xl xl:text-5xl drop-shadow-xl">
                         {popularVideo.title}
                     </p>
 
-                    <p className="text-white text-[8px] md:text-lg lg:text-xl xl:text-2xl mt-3 md:mt-8 w-[90%] md:w-[80%] lg:w-[50%] max-w-5xl drop-shadow-xl truncate">
+                    <p className="w-full mt-3 text-white text-md lg:text-lg xl:text-xl md:mt-8 drop-shadow-xl">
                         {popularVideo.description}
                     </p>
 
-
-                    <div className="mt-3 md:mt-4">
+                    <div className="mt-4">
                         <PlayButton movieId={popularVideo?.id} />
                     </div>
 
