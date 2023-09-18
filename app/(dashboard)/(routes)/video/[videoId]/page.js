@@ -14,7 +14,7 @@ const Video = () => {
     const { videoId } = params;
     const [video, setVideo] = useState(null);
     const [toggleLike, setToggleLike] = useState(false);
-    const [toggleDisLike, setToggleDisLike] = useState(false);
+    const [toggleDislike, setToggleDislike] = useState(false);
 
     const btnWrapper = "border-2 border-white10 rounded-full w-10 h-10 flex items-center justify-center p-2 bg-gray40";
 
@@ -34,15 +34,13 @@ const Video = () => {
     }
 
     const handleToggleDislike = async () => {
-        console.log("handleToggleDislike");
-        setToggleDisLike(!toggleDisLike);
-        setToggleLike(toggleDisLike);
+        setToggleDislike(!toggleDislike);
+        setToggleLike(toggleDislike);
     };
 
     const handleToggleLike = async () => {
-        console.log("handleToggleLike");
         setToggleLike(!toggleLike);
-        setToggleDisLike(toggleLike);
+        setToggleDislike(toggleLike);
     };
 
     const {
@@ -75,12 +73,12 @@ const Video = () => {
                 <div className="absolute flex pl-4 mb-3 top-1/4 gap-x-4">
                     <div className={btnWrapper}>
                         <button onClick={handleToggleLike}>
-                            <Like />
+                            <Like selected={toggleLike} />
                         </button>
                     </div>
                     <div className={btnWrapper}>
                         <button onClick={handleToggleDislike}>
-                            <Dislike />
+                            <Dislike selected={toggleDislike} />
                         </button>
                     </div>
                 </div>
