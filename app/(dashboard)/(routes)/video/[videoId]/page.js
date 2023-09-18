@@ -7,6 +7,8 @@ import { getYoutubeVideoById } from "@/lib/videos";
 import Navbar from "@/components/Navbar";
 import Like from "@/components/icons/Like";
 import Dislike from "@/components/icons/Dislike";
+import YouTube from 'react-youtube';
+import Image from "next/image";
 
 const Video = () => {
     const router = useRouter();
@@ -15,6 +17,7 @@ const Video = () => {
     const [video, setVideo] = useState(null);
     const [toggleLike, setToggleLike] = useState(false);
     const [toggleDislike, setToggleDislike] = useState(false);
+    const [playing, setPlaying] = useState(false);
 
     const btnWrapper = "border-2 border-white10 rounded-full w-10 h-10 flex items-center justify-center p-2 bg-gray40";
 
@@ -33,6 +36,16 @@ const Video = () => {
         return <div>Loading...</div>;
     }
 
+    const opts = {
+        width: '100%',
+        height: 360,
+        playerVars: {
+            autoplay: 0,
+            controls: 0,
+            rel: 0,
+        },
+    };
+
     const handleToggleDislike = async () => {
         setToggleDislike(!toggleDislike);
         setToggleLike(toggleDislike);
@@ -42,6 +55,23 @@ const Video = () => {
         setToggleLike(!toggleLike);
         setToggleDislike(toggleLike);
     };
+
+    const handlePlaying = (obj) => {
+        let playerState = obj.target.getPlayerState();
+        // ! REFACTOR
+        if (playerState === YouTube.PlayerState.PLAYING) {
+            setPlaying(true);
+        } else if (playerState === YouTube.PlayerState.PAUSED) {
+            setPlaying(false);
+        } else if (playerState === YouTube.PlayerState.BUFFERING) {
+            setPlaying(false);
+        } else if (playerState === YouTube.PlayerState.ENDED) {
+            setPlaying(false);
+        } else if (playerState === YouTube.PlayerState.UNSTARTED) {
+            setPlaying(false);
+        }
+
+    }
 
     const {
         title,
@@ -61,16 +91,9 @@ const Video = () => {
                 className="absolute left-0 right-0 my-auto mx-auto w-11/12 md:w-4/5 lg:w-3/5 xl:w-1/2 bottom-10 h-fit bg-gray40 top-[10%] outline-none rounded-xl"
                 overlayClassName="top-0 left-0 right-0 bottom-0 w-full h-screen"
             >
-                <iframe
-                    id="ytplayer"
-                    type="text/html"
-                    width="100%"
-                    height="360"
-                    src={`https://www.youtube.com/embed/${videoId}?autoplay=0&origin=http://example.com&controls=0&rel=1`}
-                    className="shadow rounded-t-xl"
-                ></iframe>
 
-                <div className="absolute flex pl-4 mb-3 top-1/4 gap-x-4">
+                <YouTube videoId={videoId} opts={opts} onStateChange={handlePlaying} />
+                <div className={`absolute pl-4 mb-3 top-1/4 gap-x-4 ${playing ? "hidden" : "flex"} transition ease-in-out`}>
                     <div className={btnWrapper}>
                         <button onClick={handleToggleLike}>
                             <Like selected={toggleLike} />
@@ -102,8 +125,8 @@ const Video = () => {
                         </div>
                     </div>
                 </div>
-            </Modal>
-        </div>
+            </Modal >
+        </div >
     );
 }
 
