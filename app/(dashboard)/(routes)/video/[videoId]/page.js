@@ -14,11 +14,12 @@ const Video = () => {
     const params = useParams();
     const { videoId } = params;
     const [video, setVideo] = useState(null);
+    const [toggleLike, setToggleLike] = useState(false);
+    const [toggleDisLike, setToggleDisLike] = useState(false);
 
     const btnWrapper = "border-2 border-white10 rounded-full w-10 h-10 flex items-center justify-center p-2 bg-gray40";
 
     useEffect(() => {
-
         const getYoutubeVideo = async () => {
             const videoArray = await getYoutubeVideoById(videoId);
             if (videoArray.length > 0) {
@@ -32,6 +33,18 @@ const Video = () => {
     if (!video) {
         return <div>Loading...</div>;
     }
+
+    const handleToggleDislike = async () => {
+        console.log("handleToggleDislike");
+        setToggleDisLike(!toggleDisLike);
+        setToggleLike(toggleDisLike);
+    };
+
+    const handleToggleLike = async () => {
+        console.log("handleToggleLike");
+        setToggleLike(!toggleLike);
+        setToggleDisLike(toggleLike);
+    };
 
     const {
         title,
@@ -62,12 +75,12 @@ const Video = () => {
 
                 <div className="absolute flex pl-4 mb-3 top-1/4 gap-x-4">
                     <div className={btnWrapper}>
-                        <button>
+                        <button onClick={handleToggleLike}>
                             <Like />
                         </button>
                     </div>
                     <div className={btnWrapper}>
-                        <button>
+                        <button onClick={handleToggleDislike}>
                             <Dislike />
                         </button>
                     </div>
