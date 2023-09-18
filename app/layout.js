@@ -23,8 +23,6 @@ export default function RootLayout({ children }) {
 
         if (!isAuthenticated) {
           router.push('/sign-in');
-        } else {
-          router.push('/');
         }
       } catch (error) {
         console.error('Error checking authentication:', error);
@@ -36,7 +34,9 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        {children}
+      </body>
     </html>
   );
 }
