@@ -3,7 +3,6 @@
 import Modal from "react-modal";
 import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from "react";
-import clsx from "classnames";
 import { getYoutubeVideoById } from "@/lib/videos";
 import Navbar from "@/components/Navbar";
 import Like from "@/components/icons/Like";
@@ -61,7 +60,7 @@ const Video = () => {
                 isOpen={true}
                 contentLabel="Watch the video"
                 onRequestClose={() => router.back()}
-                className="absolute left-0 right-0 my-0 mx-auto w-11/12 md:w-4/5 lg:w-3/5 xl:w-1/2 bottom-10 h-fit bg-black40 top-[10%] outline-none rounded-xl border border-white"
+                className="absolute left-0 right-0 my-auto mx-auto w-11/12 md:w-4/5 lg:w-3/5 xl:w-1/2 bottom-10 h-fit bg-gray40 top-[10%] outline-none rounded-xl"
                 overlayClassName="top-0 left-0 right-0 bottom-0 w-full h-screen"
             >
                 <iframe
