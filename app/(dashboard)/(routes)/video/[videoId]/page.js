@@ -6,12 +6,16 @@ import React, { useEffect, useState } from "react";
 import clsx from "classnames";
 import { getYoutubeVideoById } from "@/lib/videos";
 import Navbar from "@/components/Navbar";
+import Like from "@/components/icons/Like";
+import Dislike from "@/components/icons/Dislike";
 
 const Video = () => {
     const router = useRouter();
     const params = useParams();
     const { videoId } = params;
     const [video, setVideo] = useState(null);
+
+    const btnWrapper = "border-2 border-white10 rounded-full w-10 h-10 flex items-center justify-center p-2 bg-gray40";
 
     useEffect(() => {
 
@@ -44,7 +48,7 @@ const Video = () => {
                 isOpen={true}
                 contentLabel="Watch the video"
                 onRequestClose={() => router.back()}
-                className="absolute left-0 right-0 my-0 mx-auto w-11/12 bottom-10 h-fit bg-black40 top-[10%] outline-none rounded-xl border border-white lg:w-1/2"
+                className="absolute left-0 right-0 my-0 mx-auto w-11/12 md:w-4/5 lg:w-3/5 xl:w-1/2 bottom-10 h-fit bg-black40 top-[10%] outline-none rounded-xl border border-white"
                 overlayClassName="top-0 left-0 right-0 bottom-0 w-full h-screen"
             >
                 <iframe
@@ -56,9 +60,22 @@ const Video = () => {
                     className="shadow rounded-t-xl"
                 ></iframe>
 
-                <div className="px-12 py-0 my-5 lg:px-4">
-                    <div className="grid grid-cols-[minmax(0,2fr),minmax(0,1fr)] gap-x-8">
-                        <div className="overflow-y-scroll max-h-96 px-4">
+                <div className="flex mb-3 absolute top-[35%] pl-4">
+                    <div className={btnWrapper}>
+                        <button>
+                            <Like />
+                        </button>
+                    </div>
+                    <div className={btnWrapper}>
+                        <button>
+                            <Dislike />
+                        </button>
+                    </div>
+                </div>
+
+                <div className="px-6 py-0 my-5 md:px-10 lg:px-8">
+                    <div className="grid md:grid-cols-1  xl:grid-cols-[minmax(0,2fr),minmax(0,1fr)] gap-x-8">
+                        <div className="overflow-y-auto xl:px-4 max-h-96">
                             <p className="mb-2 text-lg text-green10">{publishTime}</p>
                             <p className="text-lg text-white10">{title}</p>
                             <p className="mt-3 mb-2 text-sm">{description}</p>
