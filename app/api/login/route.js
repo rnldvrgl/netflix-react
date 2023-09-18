@@ -35,7 +35,7 @@ export async function POST(request) {
 
         const message = isNewUserQuery ? "New User Created" : "Not a New User";
 
-        return NextResponse.json({ done: true, status: 200, tokenCookie, message });
+        return NextResponse.json({ done: true, status: 200, message, headers: { "Set-Cookie": tokenCookie } });
 
     } catch (error) {
         console.error("Something went wrong logging in", error);
