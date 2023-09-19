@@ -6,7 +6,7 @@ const PlayButton = ({ movieId }) => {
     return (
         <div>
             <button
-                onClick={() => router.push(`/video/${movieId}`)}
+                onClick={() => router.push(`/browse/video/${movieId}`)}
                 className="flex flex-row items-center w-auto px-2 py-1 text-xs font-semibold transition bg-white rounded-md text-black30 md:py-2 md:px-4 lg:text-lg hover:bg-neutral-300"
             >
                 <PlayIcon className="w-4 mr-1 text-black md:w-7" />
