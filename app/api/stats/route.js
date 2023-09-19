@@ -1,20 +1,24 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
+import { findVideoIdByUser } from "@/lib/db/hasura";
 
 export async function POST(request) {
     try {
-        const tokenCookie = cookies().get("token")?.value;
+        const token = cookies().get("token")?.value;
 
         let message, status;
 
-        if (!tokenCookie) {
+        if (!token) {
             message = "Unauthorized";
             status = 403;
         } else {
-            const decoded = jwt.verify(tokenCookie, process.env.JWT_SECRET);
-            const issuer = decoded.issuer;
-            console.log(issuer)
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            const userId = decoded.issuer;
+            const videoId = "Gt5xDOQ0Y10";
+
+            const findVideoId = await findVideoIdByUser(token, userId, videoId);
+
             message = "Authorized";
             status = 200;
         }
