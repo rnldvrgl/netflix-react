@@ -34,15 +34,13 @@ export async function POST(request) {
 
         const message = isNewUserQuery ? "New User Created" : "Not a New User";
 
-        return NextResponse.json({ status: 200, message, done: true }, {
-            headers: {
-                "Set-Cookie": tokenCookie,
-            }
+        return NextResponse.json({ message, done: true }, { status: 200 }, {
+            headers: { "Set-Cookie": tokenCookie, }
         });
 
     } catch (error) {
         console.error("Something went wrong logging in", error);
-        return NextResponse.json({ status: 500, done: false });
+        return NextResponse.json({ done: false }, { status: 500 });
     }
 }
 
