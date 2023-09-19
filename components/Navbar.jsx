@@ -7,6 +7,7 @@ import { VscTriangleDown } from "react-icons/vsc";
 import NetflixLogo from "./NetflixLogo";
 import { magic } from "@/lib/magic-client";
 
+
 const Navbar = () => {
     const [showDropdown, setShowDropdown] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);

@@ -6,7 +6,6 @@ import { setTokenCookie } from "@/lib/cookies";
 
 export async function POST(request) {
     try {
-
         const authorizationHeader = request.headers.get('Authorization');
 
         const didToken = authorizationHeader ? authorizationHeader.substr(7) : "";
