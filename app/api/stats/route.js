@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
-import { findVideoIdByUser, updateStats } from "@/lib/db/hasura";
+import { findVideoIdByUser, insertStats, updateStats } from "@/lib/db/hasura";
 
 export async function POST(request) {
     try {
@@ -18,19 +18,26 @@ export async function POST(request) {
         const userId = decodedToken.issuer;
         const doesStatsExist = await findVideoIdByUser(token, userId, videoId);
         const message = "Authorized";
+        const status = 200;
 
         if (doesStatsExist) {
-            const status = 200;
             const response = await updateStats(token, {
                 watched: false,
                 favourited: 0,
                 userId,
                 videoId,
             });
+
             return NextResponse.json({ response, message }, { status });
         } else {
-            const status = 500;
-            return NextResponse.json({ doesStatsExist, message }, { status });
+            const response = await insertStats(token, {
+                watched: false,
+                userId,
+                videoId,
+                favourited: 0,
+            });
+
+            return NextResponse.json({ response, message }, { status });
         }
     } catch (error) {
         console.error("Error occurred while checking token:", error?.message);
