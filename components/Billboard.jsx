@@ -41,7 +41,7 @@ const Billboard = () => {
                         {popularVideo.title}
                     </p>
 
-                    <p className="w-full mt-3 text-white text-md lg:text-lg xl:text-xl md:mt-8 drop-shadow-xl">
+                    <p className="w-full mt-3 text-white truncate text-md lg:text-lg xl:text-xl md:mt-8 drop-shadow-xl">
                         {popularVideo.description}
                     </p>
 
