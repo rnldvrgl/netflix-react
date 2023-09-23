@@ -23,7 +23,7 @@ export async function POST(request) {
             const status = 200;
             const response = await updateStats(token, {
                 watched: false,
-                favourited: 2,
+                favourited: 0,
                 userId,
                 videoId,
             });
