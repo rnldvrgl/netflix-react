@@ -48,12 +48,41 @@ const Video = () => {
     const handleToggleDislike = async () => {
         setToggleDislike(!toggleDislike);
         setToggleLike(toggleDislike);
+
+        const val = !toggleDislike;
+
+        const response = await fetch("/api/stats", {
+            method: "POST",
+            body: JSON.stringify({
+                videoId,
+                favourited: val ? 0 : 1,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        console.log("data", await response.json());
     };
 
     const handleToggleLike = async () => {
         setToggleLike(!toggleLike);
         setToggleDislike(toggleLike);
+
+        const val = !toggleLike;
+
+        const response = await fetch("/api/stats", {
+            method: "POST",
+            body: JSON.stringify({
+                videoId,
+                favourited: val ? 1 : 0,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        console.log("data", await response.json());
     };
+
 
     const handlePlaying = (obj) => {
         let playerState = obj.target.getPlayerState();
