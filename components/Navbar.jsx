@@ -13,20 +13,23 @@ const Navbar = () => {
     const [showDropdown, setShowDropdown] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [username, setUsername] = useState("");
+    const [didToken, setDidToken] = useState("");
     const router = useRouter();
 
     useEffect(() => {
         const applyUsernameInNav = async () => {
             try {
-                const { email } = await magic.user.getInfo();
+                const { email, issuer } = await magic.user.getInfo();
+                const didToken = await magic.user.getIdToken();
+
                 if (email) {
                     setUsername(email);
+                    setDidToken(didToken);
                 }
             } catch (error) {
                 console.error("Error retrieving email:", error);
             }
         }
-
 
         applyUsernameInNav();
 
