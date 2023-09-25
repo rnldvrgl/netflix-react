@@ -1,4 +1,3 @@
-
 import { getIsAuthenticated } from "@/actions/getIsAuthenticated";
 import Navbar from "@/components/Navbar";
 import SectionCards from "@/components/SectionCards";
