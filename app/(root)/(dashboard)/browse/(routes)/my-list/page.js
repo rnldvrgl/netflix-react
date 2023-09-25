@@ -6,7 +6,7 @@ import { getMyList } from "@/lib/videos";
 import Head from "next/head";
 
 export default async function MyList() {
-    const { userId, token } = await getIsAuthenticated();
+    const { userId, token } = await getIsAuthenticated() || {};
     const myListVideos = await getMyList(userId, token);
 
     return (

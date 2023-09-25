@@ -15,6 +15,7 @@
     "classnames": "^2.3.2",
     "clsx": "^2.0.0",
     "cookie": "^0.5.0",
+    "encoding": "^0.1.13",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
     "framer-motion": "^10.16.4",
