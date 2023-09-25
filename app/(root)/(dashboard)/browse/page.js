@@ -10,11 +10,6 @@ import { redirect } from 'next/navigation';
 export default async function Home() {
   const token = cookies().get("token")?.value;
   const userId = await verifyToken(token);
-
-  if (!userId) {
-    redirect('/sign-in');
-  }
-
   const twiceVideos = await getVideos('twice');
   const productivityVideos = await getVideos('productivity');
   const travelVideos = await getVideos('travel');

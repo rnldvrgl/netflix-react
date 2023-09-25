@@ -6,6 +6,9 @@ const poppins = Poppins({ subsets: ['latin'], weight: ['100', '200', '300', '400
 export const metadata = {
   title: 'Netflix Clone | Next.js',
   description: 'Netflix Clone using Next JS, Tailwind CSS',
+  icons: {
+    icon: '/images/netflix.ico',
+  },
 };
 
 export default function RootLayout({ children }) {

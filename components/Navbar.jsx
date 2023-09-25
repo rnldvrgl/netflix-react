@@ -16,7 +16,7 @@ const Navbar = () => {
     const router = useRouter();
 
     useEffect(() => {
-        async function getUsername() {
+        const applyUsernameInNav = async () => {
             try {
                 const { email } = await magic.user.getInfo();
                 if (email) {
@@ -26,7 +26,10 @@ const Navbar = () => {
                 console.error("Error retrieving email:", error);
             }
         }
-        getUsername();
+
+
+        applyUsernameInNav();
+
     }, []);
 
     useEffect(() => {

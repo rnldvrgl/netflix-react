@@ -94,7 +94,7 @@ const Login = () => {
                             Email address
                         </label>
                     </div>
-                    <p className="fixed my-1 text-sm font-thin text-white20">{userMsg}</p>
+                    <p className="fixed my-1 text-sm text-rose-300">{userMsg}</p>
                     <button onClick={handleLoginWithEmail} className="w-full py-3 mt-10 text-white transition rounded-md bg-red10 hover:bg-red-700">
                         {isLoading ? "Loading ..." : "Sign In"}
                     </button>
