@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Card from "./card";
+import Card from "@/components/Card";
 
 const SectionCards = (props) => {
     const { title, videos = [], size, shouldWrap = false, shouldScale, justify = "start" } = props;
