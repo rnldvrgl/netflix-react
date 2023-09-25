@@ -10,7 +10,6 @@ export async function POST(request) {
 
         const didToken = authorizationHeader ? authorizationHeader.substr(7) : "";
 
-        console.log(didToken)
 
         const metadata = await magicAdmin.users.getMetadataByToken(didToken);
 

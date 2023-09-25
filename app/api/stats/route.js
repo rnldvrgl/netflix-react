@@ -50,8 +50,9 @@ export async function GET(request) {
             return NextResponse.json({ message: "Unauthorized" }, { status: 403 });
         }
 
-        const userId = await verifyToken(token);
+        const userId = verifyToken(token);
 
+        // const videoId = request.params;
         const videoId = request.nextUrl.searchParams.get('videoId');
 
         const findVideo = await findVideoIdByUser(token, userId, videoId);

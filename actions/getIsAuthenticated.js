@@ -1,6 +1,13 @@
-import { magic } from "@/lib/magic";
+import { cookies } from "next/headers";
+import { verifyToken } from "@/lib/utils";
 
 export const getIsAuthenticated = async () => {
-    const isAuthenticated = await magic.user.isLoggedIn();
-    return isAuthenticated;
-}
+    try {
+        const token = cookies().get("token")?.value;
+        const userId = await verifyToken(token);
+        return userId;
+    } catch (error) {
+        console.error("Error checking user authentication:", error);
+        return null;
+    }
+};
