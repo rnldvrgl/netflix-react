@@ -34,11 +34,7 @@ export default async function Home() {
         <SectionCards title="Watch it again" videos={watchItAgainVideos} size="small" />
         <SectionCards title="Disney" videos={disneyVideos} size="large" />
         <SectionCards title="Travel" videos={travelVideos} size="small" />
-        <SectionCards
-          title="Productivity"
-          videos={productivityVideos}
-          size="medium"
-        />
+        <SectionCards title="Productivity" videos={productivityVideos} size="medium" />
         <SectionCards title="Popular" videos={popularVideos} size="small" />
       </div >
     </ >
