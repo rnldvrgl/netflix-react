@@ -2,17 +2,12 @@
 import { getIsAuthenticated } from "@/actions/getIsAuthenticated";
 import Navbar from "@/components/Navbar";
 import SectionCards from "@/components/SectionCards";
-import { getMyList, getVideos } from "@/lib/videos";
+import { getMyList } from "@/lib/videos";
 import Head from "next/head";
-import { redirect } from "next/navigation";
 
 export default async function MyList() {
     const { userId, token } = await getIsAuthenticated();
     const myListVideos = await getMyList(userId, token);
-
-    if (!userId) {
-        redirect('sign-in')
-    }
 
     return (
         <>
