@@ -115,7 +115,11 @@ const Video = () => {
     }, [videoId]);
 
     if (!video) {
-        return <div className="m-auto">Loading...</div>;
+        return (
+            <div className="grid w-screen h-screen place-items-center">
+                <div> Loading...</div >
+            </div>
+        );
     }
 
     const opts = {
