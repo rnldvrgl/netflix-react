@@ -1,15 +1,14 @@
-"use server"
-
 import Billboard from '@/components/Billboard'
 import { getVideos, getPopularVideos, getWatchItAgainVideos } from "@/lib/videos";
 import Navbar from '@/components/Navbar'
 import SectionCards from '@/components/SectionCards'
 import React from 'react';
 import { cookies } from "next/headers";
+import { verifyToken } from '@/lib/utils';
 
 export default async function Home() {
   const token = cookies().get("token")?.value;
-  const userId = "did:ethr:0x39258f6a54693F5B23a43764dE2E4de34B21e050";
+  const userId = await verifyToken(token);
   const disneyVideos = await getVideos('disney trailer');
   const productivityVideos = await getVideos('productivity');
   const travelVideos = await getVideos('travel');

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
 import { findVideoIdByUser, insertStats, updateStats } from "@/lib/db/hasura";
+import { verifyToken } from "@/lib/utils";
 
 export async function POST(request) {
     try {
@@ -40,7 +41,6 @@ export async function POST(request) {
 }
 
 
-import { verify as verifyToken } from 'jsonwebtoken';
 
 export async function GET(request) {
     try {
@@ -50,9 +50,8 @@ export async function GET(request) {
             return NextResponse.json({ message: "Unauthorized" }, { status: 403 });
         }
 
-        const decodedToken = verifyToken(token, process.env.JWT_SECRET);
-        const userId = decodedToken.issuer;
-        // const videoId = request.params;
+        const userId = await verifyToken(token);
+
         const videoId = request.nextUrl.searchParams.get('videoId');
 
         const findVideo = await findVideoIdByUser(token, userId, videoId);
