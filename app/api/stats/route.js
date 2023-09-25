@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
 import { findVideoIdByUser, insertStats, updateStats } from "@/lib/db/hasura";
@@ -36,5 +36,36 @@ export async function POST(request) {
         console.error("Error occurred while checking token:", error?.message);
         const status = 500;
         return NextResponse.json({ done: false, error: error?.message }, { status });
+    }
+}
+
+
+import { verify as verifyToken } from 'jsonwebtoken';
+
+export async function GET(request) {
+    try {
+        const token = cookies().get("token")?.value;
+
+        if (!token) {
+            return NextResponse.json({ message: "Unauthorized" }, { status: 403 });
+        }
+
+        const decodedToken = verifyToken(token, process.env.JWT_SECRET);
+        const userId = decodedToken.issuer;
+        // const videoId = request.params;
+        const videoId = request.nextUrl.searchParams.get('videoId');
+
+        const findVideo = await findVideoIdByUser(token, userId, videoId);
+        const doesStatsExist = findVideo?.length > 0;
+
+        const response = doesStatsExist
+            ? { message: "Video found", status: 200 }
+            : { message: "Video not found", status: 404 };
+
+        return NextResponse.json({ findVideo, ...response }, { status: response.status });
+    } catch (error) {
+        console.error("Error occurred while checking token:", error?.message);
+
+        return NextResponse.json({ done: false, error: error?.message }, { status: 500 });
     }
 }
