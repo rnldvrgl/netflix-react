@@ -25,10 +25,10 @@ const Login = () => {
 
     const handleLoginWithEmail = async (e) => {
         e.preventDefault();
-        setIsLoading(true);
 
         if (isValidEmail(email)) {
             try {
+                setIsLoading(true);
                 const didToken = await magic.auth.loginWithMagicLink({
                     email,
                 });
@@ -51,9 +51,9 @@ const Login = () => {
                     }
                 }
             } catch (error) {
+                setIsLoading(false);
                 // Handle errors if required!
                 console.error("Something went wrong logging in", error);
-                setIsLoading(false);
             }
         } else {
             setIsLoading(false);
