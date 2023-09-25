@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import cls from "classnames";
 
 const Card = (props) => {
-    const { imgUrl, size, id } = props;
+    const { imgUrl, size, id, shouldScale = true } = props;
 
     const scale = id === 0 ? { scaleY: 1.1 } : { scale: 1.1 };
 
@@ -18,9 +18,13 @@ const Card = (props) => {
 
     const [imageSrc, setImageSrc] = useState(imgUrl);
 
+    const shouldHover = shouldScale && {
+        whileHover: { ...scale },
+    };
+
     return (
         <div className="mr-1 cursor-pointer">
-            <motion.div className={cls("relative inline-block hover:z-10", classMap[size])} whileHover={{ ...scale }}>
+            <motion.div className={cls("relative inline-block hover:z-10", classMap[size])} {...shouldHover}>
                 <Image
                     src={imageSrc}
                     alt="image"
