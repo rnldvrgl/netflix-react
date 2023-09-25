@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { VscTriangleDown } from "react-icons/vsc";
 import NetflixLogo from "./NetflixLogo";
 import { magic } from "@/lib/magic-client";
+import { removeTokenCookie } from "@/lib/cookies";
 
 
 const Navbar = () => {
@@ -53,12 +54,23 @@ const Navbar = () => {
         { text: "My List", path: "/browse/my-list" },
     ];
 
-    const handleSignout = async (e) => {
-        e.preventDefault();
-
+    const handleSignout = async () => {
         try {
-            await magic.user.logout();
-            router.push("/sign-in");
+            const response = await fetch("/api/logout", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            const loggedOutResponse = await response.json();
+
+            if (loggedOutResponse.done && await magic.user.logout()) {
+                router.push("/sign-in");
+            } else {
+                setIsLoading(false);
+                setUserMsg("Something went wrong logging out");
+            }
         } catch (error) {
             console.error("Error logging out", error);
         }

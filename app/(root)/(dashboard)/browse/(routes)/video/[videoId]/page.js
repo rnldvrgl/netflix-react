@@ -52,7 +52,6 @@ const Video = () => {
 
         try {
             const data = await runRatingService(favourited);
-            console.log("Updated video stats:", data);
         } catch (error) {
             // Handle the error
         }
@@ -66,7 +65,6 @@ const Video = () => {
 
         try {
             const data = await runRatingService(favourited);
-            console.log("Updated video stats:", data);
         } catch (error) {
             // Handle the error
         }

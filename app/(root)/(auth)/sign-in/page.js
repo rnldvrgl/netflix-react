@@ -41,8 +41,6 @@ const Login = () => {
                         },
                     });
 
-                    console.log("RESPONSE", response)
-
                     const loggedInResponse = await response.json();
 
                     if (loggedInResponse.done) {
