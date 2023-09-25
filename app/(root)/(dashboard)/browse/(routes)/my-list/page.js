@@ -1,8 +1,15 @@
+import { getIsAuthenticated } from "@/actions/getIsAuthenticated";
 import Navbar from "@/components/Navbar";
 import SectionCards from "@/components/SectionCards";
+import { getMyList } from "@/lib/videos";
 import Head from "next/head";
+import { redirect } from "next/navigation";
 
 export default async function MyList() {
+    const { userId, token } = await getIsAuthenticated();
+
+    const myListVideos = await getMyList(userId, token);
+
     return (
         <>
             <Head>
@@ -15,7 +22,7 @@ export default async function MyList() {
 
                 {/* Section Cards */}
                 <div className="flex flex-col gap-y-12" >
-                    <SectionCards title="My List" videos={[]} size="small" />
+                    <SectionCards title="My List" videos={myListVideos} size="small" />
                 </div>
             </main>
         </>
