@@ -4,7 +4,10 @@ const nextConfig = {
     swcMinify: true,
     images: {
         domains: ["images.unsplash.com", "i.ytimg.com", "yt3.ggpht.com"],
-    }
+    },
+    experimental: {
+        serverActions: true,
+    },
 }
 
 module.exports = nextConfig
