@@ -15,7 +15,7 @@ export default async function Home() {
     redirect('/sign-in');
   }
 
-  const Twice = await getVideos('twice');
+  const twiceVideos = await getVideos('twice');
   const productivityVideos = await getVideos('productivity');
   const travelVideos = await getVideos('travel');
   const popularVideos = await getPopularVideos();
@@ -32,7 +32,7 @@ export default async function Home() {
       {/* Section Cards */}
       <div className="flex flex-col pb-12 mt-12 gap-y-12" >
         <SectionCards title="Watch it again" videos={watchItAgainVideos} size="small" />
-        <SectionCards title="Twice" videos={Twice} size="large" />
+        <SectionCards title="Twice" videos={twiceVideos} size="large" />
         <SectionCards title="Travel" videos={travelVideos} size="small" />
         <SectionCards title="Productivity" videos={productivityVideos} size="medium" />
         <SectionCards title="Popular" videos={popularVideos} size="small" />
