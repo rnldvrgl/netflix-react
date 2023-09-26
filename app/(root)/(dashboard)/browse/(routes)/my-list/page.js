@@ -5,8 +5,8 @@ import { getMyList } from "@/lib/videos";
 import Head from "next/head";
 
 export default async function MyList() {
-    // const { userId, token } = await getIsAuthenticated();
-    // const myListVideos = await getMyList(userId, token);
+    const { userId, token } = await getIsAuthenticated();
+    const myListVideos = await getMyList(userId, token);
 
     return (
         <>
@@ -20,7 +20,7 @@ export default async function MyList() {
 
                 {/* Section Cards */}
                 <div className="flex flex-col gap-y-12" >
-                    {/* <SectionCards title="My List" videos={myListVideos} size="large" shouldWrap shouldScale={false} justify="around" /> */}
+                    <SectionCards title="My List" videos={myListVideos} size="large" shouldWrap shouldScale={false} justify="around" />
                 </div>
             </main>
         </>
