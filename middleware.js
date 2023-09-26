@@ -17,7 +17,7 @@ export async function middleware(request) {
         return NextResponse.redirect(new URL('/browse', request.nextUrl));
     }
 
-    if ((!token || !userId) && !isPublicPath) {
+    if (!token || !userId) {
         return NextResponse.redirect(new URL('/sign-in', request.nextUrl));
     }
 }
