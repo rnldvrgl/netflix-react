@@ -56,7 +56,7 @@ const Navbar = () => {
     };
 
     const links = [
-        { text: "Home", path: "/browse" },
+        { text: "Home", path: "/" },
         { text: "My List", path: "/browse/my-list" },
     ];
 
