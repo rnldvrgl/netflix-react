@@ -1,17 +1,13 @@
 import { cookies } from "next/headers";
 import { verifyToken } from "@/lib/utils";
 
-export const getIsAuthenticated = () => {
+export const getIsAuthenticated = async () => {
     'use server'
-    return new Promise(async (resolve) => {
-        const token = cookies().get("token")?.value;
-        const userId = await verifyToken(token);
+    const token = cookies().get("token")?.value;
+    const userId = await verifyToken(token);
 
-        setTimeout(() => {
-            resolve({
-                userId,
-                token
-            })
-        }, 1000);
-    });
+    return ({
+        userId,
+        token
+    })
 };
